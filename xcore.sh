@@ -7,7 +7,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 #install ssh ovpn
-wget https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/lock-it.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./lock-it.sh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/lock-it.sh && chmod +x lock-it.sh && screen -S lock-it ./lock-it.sh
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/acelltun.sh && chmod +x acelltun.sh && screen -S v2ray ./acelltun.sh
 #Install Script SshUdp
