@@ -7,14 +7,14 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 #install ssh ovpn
-wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/corev-it.sh && chmod +x corev-it.sh && screen -S corev-it ./corev-it.sh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/mx-ray.sh && chmod +x mx-ray.sh && screen -S v2ray ./mx-ray.sh
 #Install Script SshUdp
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/udp.sh && bash udp.sh
 #Install Script AutoBackup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
-rm -f /root/cores-it.sh
+rm -f /root/ssh-vpn.sh
 rm -f /root/mx-ray.sh
 rm -f /root/udp.sh
 rm -f /root/set-br.sh
