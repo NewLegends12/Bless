@@ -237,7 +237,7 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O add-host "https://${mdxvpn}/addhost.sh"
+wget -O addhost "https://${mdxvpn}/addhost.sh"
 wget -O menu "https://${mdxvpn}/menu.sh"
 wget -O usernew "https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/usernew.sh"
 wget -O trial "https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/trial.sh"
