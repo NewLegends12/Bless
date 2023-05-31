@@ -2,7 +2,7 @@
 # Proxy For Edukasi Ssh & Ovpn Websocket
 # ====================================
 # Getting Proxy Template
-wget -q -O /usr/local/bin/edu-ssh https://raw.githubusercontent.com/Exe303/Ssh-Udp/main/ws.py
+wget -q -O /usr/local/bin/edu-ssh https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/ws.py
 chmod +x /usr/local/bin/edu-ssh
 
 # Installing Service
@@ -54,7 +54,7 @@ systemctl enable edussh-tls
 systemctl restart edussh-tls
 
 # Getting Ovpn Ws Template
-wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/Exe303/Ssh-Udp/main/edu-op.py
+wget -q -O /usr/local/bin/edu-ovpn https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/edu-op.py
 chmod +x /usr/local/bin/edu-ovpn
 
 
