@@ -17,10 +17,10 @@ organizationalunit=AcellTunnel
 commonname=AcellTunnel
 email=admin@AcellTunnel
 
-mdxvpn="raw.githubusercontent.com/Exe303/Ssh-Udp/main"
+mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/Ssh"
 
 # simple password minimal
-wget -O /etc/pam.d/common-password "https://${mdxvpn}/password"
+wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/password"
 chmod +x /etc/pam.d/common-password
 
 # go to root
@@ -94,14 +94,14 @@ apt -y install nginx
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://${mdxvpn}/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/nginx.conf"
 mkdir -p /home/vps/public_html
-wget -O /etc/nginx/conf.d/vps.conf "https://${mdxvpn}/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/vps.conf"
 /etc/init.d/nginx restart
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://${mdxvpn}/badvpn-udpgw64"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/badvpn-udpgw64"
 chmod +x /usr/bin/badvpn-udpgw
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500' /etc/rc.local
 sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500' /etc/rc.local
@@ -121,7 +121,7 @@ sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i 's/PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
 cd /etc/ssh
 rm sshd_config
-wget https://${mdxvpn}/sshd_config.zip && unzip sshd_config.zip
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sshd_config.zip && unzip sshd_config.zip
 rm sshd_config.zip
 cd
 
@@ -137,10 +137,10 @@ echo "/usr/sbin/nologin" >> /etc/shells
 cd
 
 #Install Proxy Websocket
-wget https://${mdxvpn}/websocket.sh && chmod +x websocket.sh && ./websocket.sh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/websocket.sh && chmod +x websocket.sh && ./websocket.sh
 
 #Install Proxy Edu
-wget https://${mdxvpn}/edu.sh && chmod +x edu.sh && screen -S edu ./edu.sh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/edu.sh && chmod +x edu.sh && screen -S edu ./edu.sh
 rm -f /root/edu.sh
 rm -f /root/websocket.sh
 
@@ -148,7 +148,7 @@ rm -f /root/websocket.sh
 apt install sslh -y
 cd /etc/default/
 rm sslh
-wget https://${mdxvpn}/sslh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
 cd
 
 # setting vnstat
@@ -224,7 +224,7 @@ echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
 # banner /etc/mdx.txt
-wget -O /etc/mdx.txt "https://${mdxvpn}/banner"
+wget -O /etc/mdx.txt "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/banner"
 
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
