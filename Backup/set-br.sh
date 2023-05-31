@@ -14,7 +14,7 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 # Link Hosting Kalian
-mdxvpn="raw.githubusercontent.com/Exe303/Ssh-Udp/main"
+mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/Backup"
 
 apt install rclone -y
 printf "q\n" | rclone config
