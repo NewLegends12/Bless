@@ -1,28 +1,22 @@
 #!/bin/bash
 #Script By Mardhex
 clear
-# Link Hosting Kalian
-mdxvpn="raw.githubusercontent.com/Exe303/Ssh-Udp/main"
-echo -e ""
+#Install Certificate
 echo -e "Downloading Certificate V2ray...!!!!!"
 echo -e ""
 sleep 5
-echo -e ""
 clear
 echo -e "Cecking Toll & Certificate...!!!!!!"
 echo -e ""
 sleep 4
-echo -e ""
 clear
 echo -e "Stoping Port 80 Only...!!!!!!"
 echo -e ""
 sleep 3
-echo -e ""
 clear
 echo -e "Waiting Response Server...!!!!!"
 echo -e ""
 sleep 2
-echo -e ""
 clear
 echo -e "Cecking Tool & Certificate Succes...!!,"
 echo -e ""
