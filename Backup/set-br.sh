@@ -15,7 +15,6 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 # Link Hosting Kalian
 mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/Backup"
-
 apt install rclone -y
 printf "q\n" | rclone config
 wget -O /root/.config/rclone/rclone.conf "https://${mdxvpn}/rclone.conf"
@@ -31,7 +30,6 @@ defaults
 tls on
 tls_starttls on
 tls_trust_file /etc/ssl/certs/ca-certificates.crt
-
 account default
 host smtp.gmail.com
 port 587
@@ -47,8 +45,10 @@ wget -O autobackup "https://${mdxvpn}/autobackup.sh"
 wget -O backup "https://${mdxvpn}/backup.sh"
 wget -O restore "https://${mdxvpn}/restore.sh"
 wget -O bckp "https://${mdxvpn}/bckp.sh"
+wget -O autoreboot "https://${mdxvpn}/autoreboot.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x restore
+chmod +x autoreboot
 cd
 rm -f /root/set-br.sh
