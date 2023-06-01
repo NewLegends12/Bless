@@ -246,6 +246,7 @@ netfilter-persistent reload
 # download script
 cd /usr/bin
 wget -O addhost "https://${mdxvpn}/addhost.sh"
+wget -O autoreboot "https://${mdxvpn}/autoreboot.sh"
 wget -O menu "https://${mdxvpn}/menu.sh"
 wget -O usernew "https://${mdxvpn}/usernew.sh"
 wget -O trial "https://${mdxvpn}/trial.sh"
@@ -262,6 +263,7 @@ wget -O xp "https://${mdxvpn}/xp.sh"
 wget -O tessh "https://${mdxvpn}/tessh.sh"
 
 chmod +x addhost
+chmod +x autoreboot
 chmod +x menu
 chmod +x usernew
 chmod +x trial
