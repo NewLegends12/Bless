@@ -87,6 +87,6 @@ echo enable service udp-custom
 systemctl enable udp-custom &>/dev/null
 
 echo ""
-
+sleep 0,5
 clear
 
