@@ -45,10 +45,9 @@ wget -O autobackup "https://${mdxvpn}/autobackup.sh"
 wget -O backup "https://${mdxvpn}/backup.sh"
 wget -O restore "https://${mdxvpn}/restore.sh"
 wget -O bckp "https://${mdxvpn}/bckp.sh"
-wget -O autoreboot "https://${mdxvpn}/autoreboot.sh"
+
 chmod +x autobackup
 chmod +x backup
 chmod +x restore
-chmod +x autoreboot
 cd
 rm -f /root/set-br.sh
