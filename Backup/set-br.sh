@@ -49,5 +49,6 @@ wget -O bckp "https://${mdxvpn}/bckp.sh"
 chmod +x autobackup
 chmod +x backup
 chmod +x restore
+chmod +x bckp
 cd
 rm -f /root/set-br.sh
