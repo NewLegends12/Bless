@@ -60,7 +60,9 @@ clear
 echo ""
 echo -e "          \033[1;33mSLOWDNS BERHASIL TERINSTALL!\033[0m          "
 echo ""
+sleep 2
 echo -e "Ketik Perintah : \033[1;33mslowdns\033[0m Untuk memulai Installing Slowdns"
 echo ""
+sleep 1
 cd
 slowdns
