@@ -49,17 +49,21 @@ echo -e "==========★✮  🎀  𝑀𝑒𝓃𝓊 𝒰𝓉𝒶𝓂𝒶  🎀  �
 
 echo -e " 1.  Control Panel SSH"
 
-echo -e " 2.  Control Panel Slowdns"
+echo -e " 2.  Control Panel V2ray"
 
-echo -e " 3.  Add Subdomain"
+echo -e " 3.  Control Panel Slowdns"
 
-echo -e " 5.  Autobackup Data VPS"
+echo -e " 4.  Add Subdomain"
 
-echo -e " 6.  Backup Data VPS"
+echo -e " 5.  Auto Reboot Vps"
 
-echo -e " 7.  Restore Data VPS"
+echo -e " 6.  Autobackup Data VPS"
 
-echo -e " 8.  Reboot VPS"
+echo -e " 7.  Backup Data VPS"
+
+echo -e " 8.  Restore Data VPS"
+
+echo -e " 9.  Reboot VPS"
 
 echo -e "\e[32m══════════════════════════════════════════\e[m"
 
@@ -69,7 +73,7 @@ echo -e "\e[32m═════════════════════�
 
 echo -e ""
 
-read -p "     Please Input Number  [1-22 or x] :  "  num
+read -p "     Silakn Pilih Nomor Mulai  [1-9 or x] :  "  num
 
 echo -e ""
 
@@ -83,36 +87,48 @@ tessh
 
 2)
 
-slowdns
+addws
 
 ;;
 
 3)
 
-add-host
+slowdns
 
 ;;
 
 4)
 
-autobackup
+addhost
 
 ;;
 
 5)
 
-backup
+autoreboot
 
 ;;
 
 6)
+
+autobackup
+
+;;
+
+7)
+
+backup
+
+;;
+
+8)
 
 restore
 
 
 ;;
 
-7)
+9)
 
 reboot
 
@@ -126,7 +142,7 @@ exit
 
 *)
 
-echo "Please enter an correct number"
+echo "Silakan Pilih Kembali Yang Benar"
 
 ;;
 
