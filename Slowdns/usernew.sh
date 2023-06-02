@@ -7,6 +7,8 @@ echo "Script By Mardhex"
 clear
 if [[ "$IP2" = "" ]]; then
 domain=$(cat /etc/v2ray/domain)
+NS=$(cat /etc/slowdns/infons)
+PUB=$(cat /root/server.pub)
 else
 domain=$IP2
 fi
@@ -49,17 +51,22 @@ echo -e "         𝗦𝗘𝗥𝗩𝗘𝗥 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜�
 echo -e "==============================="
 echo -e "OpenSSH     : 22"
 echo -e "Dropbear    : 109, 143"
-echo -e "Slowdns Port: 22, 443, 109,"
-echo -e "Ws None TLS : 80"
-echo -e "Ws TLS      : 443"
 echo -e "SSL/TLS     : 222, 777, 443"
+echo -e "SshWstls    : 443"
+echo -e "SshWs       : 80"
 echo -e "BadVpn      : 7100-7300"
+echo -e "UDP Custom  : 1-65350"
 echo -e ""
 echo -e "==============================="
-echo -e "         𝗦𝗟𝗢𝗪𝗗𝗡𝗦 𝗦𝗘𝗥𝗩𝗘𝗥            "
+echo -e "          𝗦𝗟𝗢𝗪𝗗𝗡𝗦 𝗦𝗘𝗥𝗩𝗘𝗥           "
 echo -e "==============================="
-echo -e "Name Server :" && cat /etc/slowdns/infons
-echo -e "Public Key  :" && cat /root/server.pub
+echo -e "Name Server : ${NS}"
+echo -e "Public Key  : ${PUB}"
+echo -e ""
+echo -e "==============================="
+echo -e "       𝗦𝗘𝗧𝗧𝗜𝗡𝗚 𝗦𝗦𝗛 𝗨𝗗𝗣𝗖𝗨𝗦𝗧𝗢𝗠    "
+echo -e "==============================="
+echo -e "${domain}:1-65350@${Login}:${Pass}"
 echo -e ""
 echo -e "==============================="
 echo -e "Created     : $created"
