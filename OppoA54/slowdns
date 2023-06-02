@@ -13,7 +13,7 @@ echo -e ""
     echo -e "\033[0;36m[06]\033[m | Hapus Script SlowDNS"
     echo -e "\033[0;36m[00]\033[m | Keluar Panel"
     echo ""
-    echo -ne "\033[0;36mPilih Install Atau Keluar Dulu Dari VPS?:\0033[m " && read option
+    echo -ne "\033[0;36mKetik Ctrl + C Untuk Keluar VPS Dulu:\0033[m " && read option
     case $option in
     1) Option1 ;;
     2) Option2 ;;
