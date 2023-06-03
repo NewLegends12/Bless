@@ -41,11 +41,6 @@ clear
 wget -q --show-progress --load-cookies /tmp/cookies.txt "https://gitlab.com/Exe302/Tunnel/-/raw/main/config.json" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
 chmod 644 /root/udp/config.json
 
-# banner /root/udp/mdx.txt
-wget -O /root/udp/mdx.txt "https://raw.githubusercontent.com/Exe303/OppoA52/main/banner"
-chmod +x /root/udp/mdx.txt
-sed -i 's/DROPBEAR_BANNER="/root/udp/mdx.txt/g' /root/udp/mdx.txt
-
 if [ -z "$1" ]; then
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
