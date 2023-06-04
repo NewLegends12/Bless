@@ -24,16 +24,12 @@ clear
 mkdir -p /etc/v2ray
 read -p " Masukan Domain Anda :  " domain
 if [[ ${domain} ]]; then
-echo $domain >/etc/v2ray/domain
-else
-echo -e " Please input your Domain"
-echo -e ""
-echo -e " Start again in 5 seconds"
+cat >/etc/v2ray/domain
 echo -e ""
 sleep 5     
 exit 1
 fi
-
+clear
 #Auto Update
 apt update -y
 apt install sudo -y
@@ -48,9 +44,8 @@ echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-
 apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear squid neofetch
 
 #Install Certificate
-cd
-mkdir /root/.acme.sh
 systemctl stop nginx
+mkdir /root/.acme.sh
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
