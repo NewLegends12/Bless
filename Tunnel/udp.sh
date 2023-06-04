@@ -20,7 +20,7 @@ clear
 echo " Please Waiting Proses Downloading Toll UdpCustom........"
 sleep 4
 clear
-wget -q --show-progress --load-cookies /tmp/cookies.txt "https://gitlab.com/Exe302/Tunnel/-/raw/main/udp-custom-linux-amd64" -O /root/udp/udp-custom && rm -rf /tmp/cookies.txt
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://github.com/Exe303/Bless/raw/main/Tunnel/udp-custom-linux-amd64" -O /root/udp/udp-custom && rm -rf /tmp/cookies.txt
 chmod +x /root/udp/udp-custom
 clear
 # install Config Default Udp
@@ -38,7 +38,7 @@ clear
 echo " Please Waiting Proses Downloading Default Config UdpCustom........"
 sleep 4
 clear
-wget -q --show-progress --load-cookies /tmp/cookies.txt "https://gitlab.com/Exe302/Tunnel/-/raw/main/config.json" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
+wget -q --show-progress --load-cookies /tmp/cookies.txt "https://github.com/Exe303/Bless/raw/main/Tunnel/config.json" -O /root/udp/config.json && rm -rf /tmp/cookies.txt
 chmod 644 /root/udp/config.json
 
 if [ -z "$1" ]; then
