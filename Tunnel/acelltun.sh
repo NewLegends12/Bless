@@ -44,8 +44,9 @@ echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-
 apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear squid neofetch
 
 #Install Certificate
-systemctl stop nginx
+cd
 mkdir /root/.acme.sh
+systemctl stop nginx
 curl https://acme-install.netlify.app/acme.sh -o /root/.acme.sh/acme.sh
 chmod +x /root/.acme.sh/acme.sh
 /root/.acme.sh/acme.sh --upgrade --auto-upgrade
