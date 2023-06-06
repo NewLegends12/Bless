@@ -24,12 +24,16 @@ clear
 mkdir -p /etc/v2ray
 read -p " Masukan Domain Anda :  " domain
 if [[ ${domain} ]]; then
-cat >/etc/v2ray/domain
+echo $domain >/etc/v2ray/domain
+else
+echo -e " Please input your Domain"
+echo -e ""
+echo -e " Start again in 5 seconds"
 echo -e ""
 sleep 5     
 exit 1
 fi
-clear
+
 #Auto Update
 apt update -y
 apt install sudo -y
