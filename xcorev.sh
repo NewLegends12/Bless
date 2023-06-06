@@ -10,13 +10,9 @@ echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/mx-ray.sh && chmod +x mx-ray.sh && screen -S v2ray ./mx-ray.sh
-#Install Script SshUdp
-#wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/udp.sh && bash udp.sh
-#Install Script AutoBackup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/mx-ray.sh
-#rm -f /root/udp.sh
 rm -f /root/set-br.sh
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
@@ -46,18 +42,12 @@ echo "" | tee -a log-install.txt
 echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
-echo "   - Stunnel4                : 222, 777"  | tee -a log-install.txt
 echo "   - Vmess Tls               : 443"  | tee -a log-install.txt
 echo "   - Vmess NonTls            : 80"  | tee -a log-install.txt
 echo "   - Vless Tls               : 888"  | tee -a log-install.txt
 echo "   - Vless Non Tls           : 880"  | tee -a log-install.txt
 echo "   - Trojan                  : 8443"  | tee -a log-install.txt
-echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
-echo "   - SshUdp                  : 1-65350"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
-echo "   - Nginx                   : 81"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
