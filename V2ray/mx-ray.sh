@@ -83,7 +83,7 @@ cat > /etc/v2ray/config.json <<-EOF
   },
   "inbounds": [
     {
-      "port": 443,
+      "port": 8443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -451,7 +451,7 @@ cat > /etc/trojan/config.json <<-EOF
 {
     "run_type": "server",
     "local_addr": "0.0.0.0",
-    "local_port": 8443,
+    "local_port": 2087,
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
@@ -558,7 +558,6 @@ wget -O deltr "https://${mdxvpn}/deltr.sh"
 wget -O cekws "https://${mdxvpn}/cekws.sh"
 wget -O cekvless "https://${mdxvpn}/cekvless.sh"
 wget -O cektr "https://${mdxvpn}/cektr.sh"
-wget -O ceknon "https://${mdxvpn}/ceknon.sh"
 wget -O renewws "https://${mdxvpn}/renewws.sh"
 wget -O renewvless "https://${mdxvpn}/renewvless.sh"
 wget -O renew-tr "https://${mdxvpn}/renewtr.sh"
@@ -572,7 +571,6 @@ chmod +x delws
 chmod +x delvless
 chmod +x deltr
 chmod +x cekws
-chmod +x ceknon
 chmod +x cekvless
 chmod +x cektr
 chmod +x renewws
