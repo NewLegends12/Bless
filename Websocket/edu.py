@@ -5,7 +5,7 @@ LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
   LISTENING_PORT = sys.argv[1]
 else:
-  LISTENING_PORT = 2082
+  LISTENING_PORT = 80
 #Pass
 PASS = ''
 
@@ -226,7 +226,7 @@ class ConnectionHandler(threading.Thread):
 def print_usage():
     print 'Usage: proxy.py -p <port>'
     print '       proxy.py -b <bindAddr> -p <port>'
-    print '       proxy.py -b 0.0.0.0 -p 2082'
+    print '       proxy.py -b 0.0.0.0 -p 80'
 
 def parse_args(argv):
     global LISTENING_ADDR
