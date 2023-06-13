@@ -45,7 +45,7 @@ sudo apt-get remove --purge ufw firewalld -y
 apt install -y --no-install-recommends software-properties-common
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
-apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear squid neofetch
+apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear neofetch
 
 #Install Certificate
 cd
