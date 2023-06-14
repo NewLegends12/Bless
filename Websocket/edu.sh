@@ -71,7 +71,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/edu-ovpn 2082
+ExecStart=/usr/bin/python -O /usr/local/bin/edu-ovpn 2086
 Restart=on-failure
 
 [Install]
@@ -88,7 +88,7 @@ echo -e "Done Install Ssh & Ovpn Websocket"
 echo -e "==============================="
 echo -e "PORT SSH NONTLS : 2082"
 echo -e "PORT SSH TLS    : 443"
-echo -e "PORT OVPN  WS   : 2082"
+echo -e "PORT OVPN  WS   : 2086"
 echo -e "==============================="
 echo -e "Script By Mardhex"
 echo -e ""
