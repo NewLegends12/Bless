@@ -145,10 +145,10 @@ rm -f /root/edu.sh
 rm -f /root/websocket.sh
 
 #install sslh
-#apt install sslh -y
-#cd /etc/default/
+apt install sslh -y
+cd /etc/default/
 #rm sslh
-#wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
 cd
 
 # setting vnstat
@@ -177,13 +177,13 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[sshws]
-accept = 2082
-connect = 127.0.0.1:22
-
-[dropbear]
+[sshovpn]
 accept = 443
 connect = 127.0.0.1:447
+
+[openvpn]
+accept = 1196
+connect = 127.0.0.1:1194
 
 END
 
@@ -311,6 +311,7 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7600 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
+screen -dmS proxy ./usr/bin/ws-ssh -l 80 -r 127.0.0.1:447
 history -c
 echo "unset HISTFILE" >> /etc/profile
 
