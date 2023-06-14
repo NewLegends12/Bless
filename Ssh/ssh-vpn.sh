@@ -311,7 +311,7 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7600 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
-screen -dmS proxy ./usr/bin/ws-ssh -l 2082 -r 127.0.0.1:447
+screen -dmS proxy ./usr/bin/ws-ssh -l 80 -r 127.0.0.1:447
 history -c
 echo "unset HISTFILE" >> /etc/profile
 
