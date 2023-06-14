@@ -47,9 +47,9 @@ echo "--------------------------------------------------------------------------
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
 echo "   - OpenSSH                 : 22"  | tee -a log-install.txt
-echo "   - Stunnel4                : 222, 777"  | tee -a log-install.txt
+echo "   - Stunnel4                : 222, 777, 443"  | tee -a log-install.txt
 echo "   - Ssh Wstls               : 443"  | tee -a log-install.txt
-echo "   - Ssh Ws                  : 2082"  | tee -a log-install.txt
+echo "   - Ssh Ws                  : 80"  | tee -a log-install.txt
 echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
 echo "   - SshUdp                  : 1-65350"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
@@ -65,7 +65,7 @@ echo "   - Whatsapp                : *"  | tee -a log-install.txt
 echo "   - Facebook                : *"  | tee -a log-install.txt
 echo "------------------A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳-----------------" | tee -a log-install.txt
 echo ""
-echo " Server Reboot 10 detik"
-sleep 10
+echo " Server Reboot 5 detik"
+sleep 5
 rm -f xcore.sh
 reboot
