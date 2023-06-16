@@ -6,7 +6,7 @@ MYIP=$(wget -qO- icanhazip.com);
 echo "Script By Mardhex"
 clear
 if [[ "$IP2" = "" ]]; then
-domain=$(cat /etc/v2ray/domain)
+domain=$(cat /etc/xray/domain)
 NS=$(cat /etc/slowdns/infons)
 PUB=$(cat /root/server.pub)
 else
