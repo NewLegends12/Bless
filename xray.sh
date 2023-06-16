@@ -10,6 +10,7 @@ echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Xray/m-xray.sh && chmod +x m-xray.sh && ./m-xray.sh
+#Install Auto Backup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/m-xray.sh
@@ -38,27 +39,27 @@ echo " "
 echo " Auto Installer Sukses Terinstall "
 echo " "
 echo "==========A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳=========" | tee -a log-install.txt
-echo "" | tee -a log-install.txt
-echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - Vmess Tls               : 443"  | tee -a log-install.txt
-echo "   - Vmess NonTls            : 80"  | tee -a log-install.txt
-echo "   - Vless Tls               : 888"  | tee -a log-install.txt
-echo "   - Vless Non Tls           : 880"  | tee -a log-install.txt
-echo "   - Trojan                  : 8443"  | tee -a log-install.txt
-echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
-echo "   - White Label" | tee -a log-install.txt
-echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
+echo "    [INFORMASI Shadowsocks-R & Shadowsocks]"  | tee -a log-install.txt
+echo "    ---------------------------------------" | tee -a log-install.txt
+echo "   - Websocket Shadowsocks   : 443"  | tee -a log-install.txt
+echo "   - Shadowsocks GRPC        : 443"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "   - Dev/Main                : KANG MARDHEX"  | tee -a log-install.txt
-echo "   - Telegram                : t.me/mdxdev"  | tee -a log-install.txt
-echo "   - Instagram               : *"  | tee -a log-install.txt
-echo "   - Whatsapp                : *"  | tee -a log-install.txt
-echo "   - Facebook                : *"  | tee -a log-install.txt
-echo "------------------A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳-----------------" | tee -a log-install.txt
+echo "    [INFORMASI XRAY]"  | tee -a log-install.txt
+echo "    ---------------------------------------" | tee -a log-install.txt
+echo "   - Xray Vmess Ws Tls       : 443"  | tee -a log-install.txt
+echo "   - Xray Vless Ws Tls       : 443"  | tee -a log-install.txt
+echo "   - Xray Vmess Ws None Tls  : 80"  | tee -a log-install.txt
+echo "   - Xray Vless Ws None Tls  : 80"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "    [INFORMASI TROJAN]"  | tee -a log-install.txt
+echo "    ---------------------------------------" | tee -a log-install.txt
+echo "   - Websocket Trojan        : 443"  | tee -a log-install.txt
+echo "   - Trojan GRPC             : 443"  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
+echo "======================[SCRIPT PREMIUM BY MARDHEX]====================="
 echo ""
-echo " Server Reboot 10 Detik"
+echo " Server Reboot 10 detik"
 sleep 10
-rm -f xcorev.sh
+rm -f xray.sh
 reboot
