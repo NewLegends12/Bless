@@ -173,8 +173,8 @@ accept = 777
 connect = 127.0.0.1:109
 
 [ws-stunnel]
-accept = 443
-connect = 127.0.0.1:447
+accept = 2096
+connect = 700
 
 [openvpn]
 accept = 442
@@ -221,6 +221,30 @@ echo '.....done'
 echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
+
+# install dropbear
+apt -y install dropbear
+sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 69"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_BANNER="/etc/mdx.txt/g' /etc/mdx.txt
+echo "/bin/false" >> /etc/shells
+echo "/usr/sbin/nologin" >> /etc/shells
+/etc/init.d/dropbear restart
+cd
+#install sslh
+apt install sslh -y
+cd /etc/default/
+rm sslh
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
+
+#Install Proxy Websocket
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/websocket.sh && chmod +x websocket.sh && ./websocket.sh
+
+#Install Proxy Edu
+wget https://raw.githubusercontent.com/Exe303/Bless/main/Websocket/edu.sh && chmod +x edu.sh && screen -S edu ./edu.sh
+rm -f /root/edu.sh
+rm -f /root/websocket.sh
 
 # banner /etc/mdx.txt
 wget -O /etc/mdx.txt "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/banner"
