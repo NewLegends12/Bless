@@ -28,6 +28,7 @@ cp group /etc/
 cp shadow /etc/
 cp gshadow /etc/
 cp -r v2ray /etc/
+cp -r xray /etc/
 cp -r udp /root/
 cp -r slowdns /etc/
 cp -r public_html /home/vps/
