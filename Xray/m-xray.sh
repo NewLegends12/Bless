@@ -13,12 +13,20 @@ echo "Suport Multi Path"
 sleep 2
 echo "Progress......"
 sleep 3
-
 date
-echo ""
-domain=$(cat /root/domain)
-sleep 1
-mkdir -p /etc/xray 
+clear
+mkdir -p /etc/xray
+read -p "Masukan Domain Anda :  " domain
+if [[ ${domain} ]]; then
+echo $domain >/etc/xray/domain
+else
+echo -e "Please input your Domain"
+echo -e ""
+echo -e "Start again in 5 seconds"
+echo -e ""
+sleep 5     
+exit 1
+fi
 echo -e "[ ${green}INFO${NC} ] Checking... "
 apt install iptables iptables-persistent -y
 sleep 1
@@ -566,11 +574,6 @@ sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "xray/Vmess"
 yellow "xray/Vless"
-
-
-mv /root/domain /etc/xray/ 
-if [ -f /root/scdomain ];then
-rm /root/scdomain > /dev/null 2>&1
 fi
 clear
 rm -f m-xray.sh  
