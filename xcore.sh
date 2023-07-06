@@ -51,7 +51,7 @@ echo "   - Stunnel4                : 222, 777, 443"  | tee -a log-install.txt
 echo "   - Ssh Wstls               : 443"  | tee -a log-install.txt
 echo "   - Ssh Ws                  : 80"  | tee -a log-install.txt
 echo "   - Dropbear                : 109, 143"  | tee -a log-install.txt
-echo "   - SshUdp                  : 1-65350"  | tee -a log-install.txt
+echo "   - Slowdns                 : 443, 53, 143"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 81"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
