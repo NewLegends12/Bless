@@ -10,6 +10,7 @@ echo "IP=" >> /var/lib/premium-script/ipvps.conf
 wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/mx-ray.sh && chmod +x mx-ray.sh && screen -S v2ray ./mx-ray.sh
+#Install AutoBackup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/mx-ray.sh
@@ -58,17 +59,7 @@ echo "   - Whatsapp                : *"  | tee -a log-install.txt
 echo "   - Facebook                : *"  | tee -a log-install.txt
 echo "------------------A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳-----------------" | tee -a log-install.txt
 echo ""
-echo "===========>>>> Proses Installing Slowdns..!!!"
+echo " Server Reboot 5 detik"
 sleep 5
-clear
-echo "===========>>>> Please Wait.........!!!"
-sleep 4
-clear
-echo "===========>>>> Cecking Toll Slowdns.........!!!"
-sleep 3
-clear
-echo "===========>>>> Installing Ready.........!!!"
-sleep 2
-clear
-sleep 1
-rm -rf install; apt update; wget https://raw.githubusercontent.com/Exe303/Bless/main/install; chmod 777 install; ./install --start
+rm -f xcorev.sh
+reboot
