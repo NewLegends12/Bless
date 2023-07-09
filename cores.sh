@@ -60,7 +60,6 @@ echo "   - Whatsapp                : *"  | tee -a log-install.txt
 echo "   - Facebook                : *"  | tee -a log-install.txt
 echo "------------------A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳-----------------" | tee -a log-install.txt
 echo ""
-echo ""
 echo "===========>>>> Proses Installing Slowdns..!!!"
 sleep 5
 clear
