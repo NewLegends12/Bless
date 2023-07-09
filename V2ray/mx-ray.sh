@@ -5,27 +5,18 @@ clear
 mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/V2ray"
 echo -e ""
 echo -e "Downloading Certificate V2ray...!!!!!"
-echo -e ""
 sleep 5
-echo -e ""
 clear
 echo -e "Cecking Toll & Certificate...!!!!!!"
-echo -e ""
 sleep 4
-echo -e ""
 clear
 echo -e "Stoping Port 80 Only...!!!!!!"
-echo -e ""
 sleep 3
-echo -e ""
 clear
 echo -e "Waiting Response Server...!!!!!"
-echo -e ""
 sleep 2
 clear
-echo -e ""
 echo -e "Cecking Tool & Certificate Succes...!!,"
-echo -e ""
 sleep 1
 clear
 mkdir -p /etc/v2ray
@@ -83,7 +74,7 @@ cat > /etc/v2ray/config.json <<-EOF
   },
   "inbounds": [
     {
-      "port": 443,
+      "port": 8443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -451,7 +442,7 @@ cat > /etc/trojan/config.json <<-EOF
 {
     "run_type": "server",
     "local_addr": "0.0.0.0",
-    "local_port": 8443,
+    "local_port": 2086,
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
