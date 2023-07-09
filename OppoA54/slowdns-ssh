@@ -10,7 +10,7 @@ ${comando[1]} -y > /dev/null 2>&1
 touch $HOME/fim
  ) > /dev/null 2>&1 &
  tput civis
-echo -ne "  \033[1;33mWAIT \033[1;37m- \033[1;33m["
+echo -ne "\033[1;33mWAIT \033[1;37m- \033[1;33m["
 while true; do
    for((i=0; i<18; i++)); do
    echo -ne "\033[1;31m#"
@@ -21,19 +21,19 @@ while true; do
    sleep 1s
    tput cuu1
    tput dl1
-   echo -ne "  \033[1;33mWAIT \033[1;37m- \033[1;33m["
+   echo -ne "\033[1;33mWAIT \033[1;37m- \033[1;33m["
 done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
 echo -e ""
 echo ""
-echo -e "  UPDATING PACKAGE LIST..."
+echo -e "UPDATING PACKAGE LIST..."
 fun_att () {
 apt update && apt upgrade -y
 }
 fun_bar 'fun_att'
-echo -e "  DOWNLOADING TOOL SLOWDNS..."
+echo -e "DOWNLOADING TOOL SLOWDNS..."
 install_pkgs () {
 apt install screen -y
 apt install cron -y
@@ -44,7 +44,7 @@ service iptables reload
 service iptables restart
 }
 fun_bar 'install_pkgs'
-echo -e "  CONFIGURING IPTABLES..."
+echo -e "CONFIGURING IPTABLES..."
 ipt_set () {
 cd /etc
 mv rc.local rc.local.bkp
@@ -56,9 +56,9 @@ systemctl start rc-local
 fun_bar 'ipt_set'
 clear
 echo ""
-echo -e "\033[1;31m PERHATIAN PADA TAHAP INI! \033[1;33m"
+echo -e "\033[1;31mPERHATIAN PADA TAHAP INI!\033[1;33m"
 echo ""
-echo -ne "\033[1;32m MASUKAN NS (NAMESERVER)\033[1;37m: "; read nameserver
+echo -ne "\033[1;32mMASUKAN NS (NAMESERVER)\033[1;37m: "; read nameserver
 cd /etc/slowdns
 touch infons
 echo $nameserver > infons
