@@ -43,11 +43,11 @@ echo "" | tee -a log-install.txt
 echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - Vmess Tls               : 443"  | tee -a log-install.txt
+echo "   - Vmess Tls               : 8443"  | tee -a log-install.txt
 echo "   - Vmess NonTls            : 80"  | tee -a log-install.txt
 echo "   - Vless Tls               : 888"  | tee -a log-install.txt
 echo "   - Vless Non Tls           : 880"  | tee -a log-install.txt
-echo "   - Trojan                  : 8443"  | tee -a log-install.txt
+echo "   - Trojan                  : 443"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
@@ -59,17 +59,7 @@ echo "   - Whatsapp                : *"  | tee -a log-install.txt
 echo "   - Facebook                : *"  | tee -a log-install.txt
 echo "------------------A̳U̳T̳O̳ ̳S̳C̳R̳I̳P̳T̳ ̳B̳Y̳ ̳M̳D̳X̳T̳U̳N̳N̳E̳L̳-----------------" | tee -a log-install.txt
 echo ""
-echo "===========>>>> Proses Installing Slowdns..!!!"
+echo " Server Reboot 5 detik"
 sleep 5
-clear
-echo "===========>>>> Please Wait.........!!!"
-sleep 4
-clear
-echo "===========>>>> Cecking Toll Slowdns.........!!!"
-sleep 3
-clear
-echo "===========>>>> Installing Ready.........!!!"
-sleep 2
-clear
-sleep 1
-rm -rf install; apt update; wget https://raw.githubusercontent.com/Exe303/Bless/main/install; chmod 777 install; ./install --start
+rm -f xcorev.sh
+reboot
