@@ -7,8 +7,8 @@ echo "Script By Mardhex"
 clear
 if [[ "$IP2" = "" ]]; then
 domain=$(cat /etc/v2ray/domain)
-NS=$(cat /etc/slowdns/infons)
-PUB=$(cat /root/server.pub)
+#NS=$(cat /etc/slowdns/infons)
+#PUB=$(cat /root/server.pub)
 else
 domain=$IP2
 fi
@@ -60,8 +60,8 @@ echo -e ""
 echo -e "==============================="
 echo -e "          𝗦𝗟𝗢𝗪𝗗𝗡𝗦 𝗦𝗘𝗥𝗩𝗘𝗥           "
 echo -e "==============================="
-echo -e "Name Server : ${NS}"
-echo -e "Public Key  : ${PUB}"
+#echo -e "Name Server : ${NS}"
+#echo -e "Public Key  : ${PUB}"
 echo -e ""
 echo -e "==============================="
 echo -e "Created     : $created"
