@@ -15,6 +15,8 @@ fi
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "User: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
+		read -rp "Password: " -e user
+		user_EXISTS=$(grep -w $user /etc/v2ray/akun.conf | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
@@ -22,7 +24,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(cat /etc/v2ray/akun.conf)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
@@ -35,7 +37,7 @@ cat > /etc/v2ray/$user-tls.json <<-EOF
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
-      "port": "8443",
+      "port": "443",
       "id": "${uuid}",
       "aid": "0",
       "net": "ws",
@@ -72,7 +74,7 @@ echo -e "==========-V2RAY/VMESS-=========="
 echo -e "Remarks        : ${user}"
 echo -e "Domain         : ${domain}"
 echo -e "Server IP      : $PUBLIC_IP"
-echo -e "port TLS       : 8443"
+echo -e "port TLS       : 443"
 echo -e "port none TLS  : 80"
 echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"

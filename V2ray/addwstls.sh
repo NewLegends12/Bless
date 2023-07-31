@@ -17,6 +17,8 @@ tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "User: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
+		read -rp "Password: " -e user
+		user_EXISTS=$(grep -w $user /etc/v2ray/akun.conf | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
@@ -24,7 +26,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(cat /etc/v2ray/akun.conf)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
