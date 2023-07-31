@@ -24,7 +24,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=$(cat /etc/trojan/uuid.txt)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
@@ -35,7 +35,7 @@ cat>/etc/v2ray/$user-tls.json<<EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "${tls}",
-      "id": "${uuid}",
+      "id": "${user}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -57,7 +57,7 @@ echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : ${tls}"
-echo -e "id             : ${uuid}"
+echo -e "id             : ${user}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"

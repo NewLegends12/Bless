@@ -34,7 +34,7 @@ trojanlink="trojan://${user}@${domain}:${tr}"
 clear
 echo -e ""
 echo -e "=============-Trojan-============"
-echo -e "ps             : ${user}"
+echo -e "Remarks        : ${user}"
 echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Host/IP        : ${domain}"
