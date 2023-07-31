@@ -36,7 +36,7 @@ cat > /etc/v2ray/$user-tls.json <<-EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "8443",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -52,7 +52,7 @@ cat > /etc/v2ray/$user-none.json <<-EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "80",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -74,7 +74,7 @@ echo -e "Domain         : ${domain}"
 echo -e "Server IP      : $PUBLIC_IP"
 echo -e "port TLS       : 8443"
 echo -e "port none TLS  : 80"
-echo -e "id             : ${user}"
+echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"

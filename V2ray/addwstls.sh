@@ -35,7 +35,7 @@ cat>/etc/v2ray/$user-tls.json<<EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "${tls}",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -57,7 +57,7 @@ echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : ${tls}"
-echo -e "id             : ${user}"
+echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"
