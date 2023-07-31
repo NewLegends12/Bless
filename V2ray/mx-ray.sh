@@ -72,7 +72,7 @@ wget https://${mdxvpn}/go.sh && chmod +x go.sh && ./go.sh
 rm -f /root/go.sh
 bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 
-uuid=$(cat /etc/trojan/uuid.txt)
+uuid=$(cat /proc/sys/kernel/random/uuid)
 
 cat > /etc/v2ray/config.json <<-EOF
 {

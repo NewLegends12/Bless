@@ -24,7 +24,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /etc/trojan/uuid.txt)
+uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
