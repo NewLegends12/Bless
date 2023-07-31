@@ -18,7 +18,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "User: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
 		read -rp "Password: " -e user
-		user_EXISTS=$(grep -w $user /etc/v2ray/akun.conf | wc -l)
+		user_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
@@ -26,7 +26,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /etc/v2ray/akun.conf)
+uuid=${user}
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
@@ -37,7 +37,7 @@ cat>/etc/v2ray/$user-tls.json<<EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "${tls}",
-      "id": "${uuid}",
+      "id": "${user}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -59,7 +59,7 @@ echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : ${tls}"
-echo -e "id             : ${uuid}"
+echo -e "id             : ${user}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"

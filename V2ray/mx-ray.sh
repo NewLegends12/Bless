@@ -68,11 +68,25 @@ chmod +x /root/.acme.sh/acme.sh
 # install V2ray
 mkdir -p /etc/trojan
 touch /etc/trojan/akun.conf
-wget https://${mdxvpn}/go.sh && chmod +x go.sh && ./go.sh
-rm -f /root/go.sh
+# / / Installation v2ray Core
+v2raycore_link="https://github.com/v2fly/v2ray-core/releases/download/v4.42.2/v2ray-linux-64.zip"
+
+# / / Make Main Directory
+mkdir -p /usr/bin/v2ray
+mkdir -p /etc/v2ray
+mkdir -p /usr/local/etc/v2ray
+
+# / / Unzip Xray Linux 64
+cd `mktemp -d`
+curl -sL "$v2raycore_link" -o v2ray.zip
+unzip -q v2ray.zip && rm -rf v2ray.zip
+mv v2ray /usr/local/bin/v2ray
+chmod +x /usr/local/bin/v2ray
+
 bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid9=$(cat /proc/sys/kernel/random/uuid)
+uuid=${user}
 
 cat > /etc/v2ray/config.json <<-EOF
 {
@@ -83,7 +97,7 @@ cat > /etc/v2ray/config.json <<-EOF
   },
   "inbounds": [
     {
-      "port": 8443,
+      "port": 443,
       "protocol": "vmess",
       "settings": {
         "clients": [
@@ -451,7 +465,7 @@ cat > /etc/trojan/config.json <<-EOF
 {
     "run_type": "server",
     "local_addr": "0.0.0.0",
-    "local_port": 443,
+    "local_port": 8443,
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
