@@ -72,7 +72,7 @@ wget https://${mdxvpn}/go.sh && chmod +x go.sh && ./go.sh
 rm -f /root/go.sh
 bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 
-uuid=${user}
+uuid=$(cat /proc/sys/kernel/random/uuid)
 
 cat > /etc/v2ray/config.json <<-EOF
 {
@@ -88,7 +88,7 @@ cat > /etc/v2ray/config.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${user}",
+            "id": "${uuid}",
             "alterId": 0
 #tls
           }
@@ -186,7 +186,7 @@ cat > /etc/v2ray/none.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${user}",
+            "id": "${uuid}",
             "alterId": 0
 #none
           }
@@ -275,7 +275,7 @@ cat > /etc/v2ray/vless.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${user}"
+            "id": "${uuid}"
 #tls
           }
         ],
@@ -372,7 +372,7 @@ cat > /etc/v2ray/vnone.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${user}"
+            "id": "${uuid}"
 #none
           }
         ],
@@ -455,7 +455,7 @@ cat > /etc/trojan/config.json <<-EOF
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
-        "$user"
+        "$uuid"
     ],
     "log_level": 1,
     "ssl": {
@@ -515,8 +515,8 @@ WantedBy=multi-user.target
 
 EOF
 
-cat > /etc/trojan/user.txt <<-EOF
-$user
+cat > /etc/trojan/uuid.txt <<-EOF
+$uuid
 EOF
 
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT

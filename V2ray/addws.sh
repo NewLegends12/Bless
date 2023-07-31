@@ -22,13 +22,13 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=${user}
+uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
-},{"id": "'""$user""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/config.json
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/config.json
 sed -i '/#none$/a\### '"$user $exp"'\
-},{"id": "'""$user""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/none.json
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/none.json
 
 cat > /etc/v2ray/$user-tls.json <<-EOF
       {
@@ -36,7 +36,7 @@ cat > /etc/v2ray/$user-tls.json <<-EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "443",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -52,7 +52,7 @@ cat > /etc/v2ray/$user-none.json <<-EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "80",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -74,7 +74,7 @@ echo -e "Domain         : ${domain}"
 echo -e "Server IP      : $PUBLIC_IP"
 echo -e "port TLS       : 443"
 echo -e "port none TLS  : 80"
-echo -e "id             : ${user}"
+echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"

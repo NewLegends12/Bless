@@ -24,18 +24,18 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=${user}
+uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
-},{"id": "'""$user""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/config.json
+},{"id": "'""$uuid""'","alterId": '"0"',"email": "'""$user""'"' /etc/v2ray/config.json
 cat>/etc/v2ray/$user-tls.json<<EOF
       {
       "v": "2",
       "ps": "${user}",
       "add": "${domain}",
       "port": "${tls}",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -57,7 +57,7 @@ echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : ${tls}"
-echo -e "id             : ${user}"
+echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"
