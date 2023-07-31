@@ -5,18 +5,27 @@ clear
 mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/V2ray"
 echo -e ""
 echo -e "Downloading Certificate V2ray...!!!!!"
+echo -e ""
 sleep 5
+echo -e ""
 clear
 echo -e "Cecking Toll & Certificate...!!!!!!"
+echo -e ""
 sleep 4
+echo -e ""
 clear
 echo -e "Stoping Port 80 Only...!!!!!!"
+echo -e ""
 sleep 3
+echo -e ""
 clear
 echo -e "Waiting Response Server...!!!!!"
+echo -e ""
 sleep 2
 clear
+echo -e ""
 echo -e "Cecking Tool & Certificate Succes...!!,"
+echo -e ""
 sleep 1
 clear
 mkdir -p /etc/v2ray
@@ -63,7 +72,7 @@ wget https://${mdxvpn}/go.sh && chmod +x go.sh && ./go.sh
 rm -f /root/go.sh
 bash -c "$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+nama=$(cat /proc/sys/kernel/random/nama)
 
 cat > /etc/v2ray/config.json <<-EOF
 {
@@ -74,12 +83,12 @@ cat > /etc/v2ray/config.json <<-EOF
   },
   "inbounds": [
     {
-      "port": 8443,
+      "port": 443,
       "protocol": "vmess",
       "settings": {
         "clients": [
           {
-            "id": "${uuid}",
+            "id": "${user}",
             "alterId": 0
 #tls
           }
@@ -177,7 +186,7 @@ cat > /etc/v2ray/none.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${uuid}",
+            "id": "${user}",
             "alterId": 0
 #none
           }
@@ -266,7 +275,7 @@ cat > /etc/v2ray/vless.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${uuid}"
+            "id": "${user}"
 #tls
           }
         ],
@@ -363,7 +372,7 @@ cat > /etc/v2ray/vnone.json <<-EOF
       "settings": {
         "clients": [
           {
-            "id": "${uuid}"
+            "id": "${user}"
 #none
           }
         ],
@@ -442,11 +451,11 @@ cat > /etc/trojan/config.json <<-EOF
 {
     "run_type": "server",
     "local_addr": "0.0.0.0",
-    "local_port": 443,
+    "local_port": 8443,
     "remote_addr": "127.0.0.1",
     "remote_port": 2603,
     "password": [
-        "$uuid"
+        "$user"
     ],
     "log_level": 1,
     "ssl": {
@@ -506,17 +515,20 @@ WantedBy=multi-user.target
 
 EOF
 
-cat > /etc/trojan/uuid.txt <<-EOF
-$uuid
+cat > /etc/trojan/user.txt <<-EOF
+$user
 EOF
 
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 2083 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8880 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2087 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 80 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2083 -j ACCEPT
-iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8080 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8880 -j ACCEPT
 iptables-save > /etc/iptables.up.rules
 iptables-restore -t < /etc/iptables.up.rules
 netfilter-persistent save

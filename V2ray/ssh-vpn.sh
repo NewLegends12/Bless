@@ -137,10 +137,10 @@ echo "/usr/sbin/nologin" >> /etc/shells
 cd
 
 #install sslh
-apt install sslh -y
-cd /etc/default/
-rm sslh
-wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
+#apt install sslh -y
+#cd /etc/default/
+#rm sslh
+#wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
 cd
 
 # setting vnstat

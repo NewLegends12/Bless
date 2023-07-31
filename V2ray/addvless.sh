@@ -25,15 +25,15 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid=${user}
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/v2ray/vless.json
+},{"id": "'""$user""'","email": "'""$user""'"' /etc/v2ray/vless.json
 sed -i '/#none$/a\### '"$user $exp"'\
-},{"id": "'""$uuid""'","email": "'""$user""'"' /etc/v2ray/vnone.json
-vlesslink1="vless://${uuid}@${domain}:$tls?path=/ACell&security=tls&encryption=none&type=ws#${user}"
-vlesslink2="vless://${uuid}@${domain}:$none?path=/ACell&encryption=none&type=ws#${user}"
+},{"id": "'""$user""'","email": "'""$user""'"' /etc/v2ray/vnone.json
+vlesslink1="vless://${user}@${domain}:$tls?path=/ACell&security=tls&encryption=none&type=ws#${user}"
+vlesslink2="vless://${user}@${domain}:$none?path=/ACell&encryption=none&type=ws#${user}"
 systemctl restart v2ray@vless
 systemctl restart v2ray@vnone
 clear
@@ -45,7 +45,7 @@ echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : $tls"
 echo -e "port none TLS  : $none"
-echo -e "id             : ${uuid}"
+echo -e "id             : ${user}"
 echo -e "Encryption     : none"
 echo -e "network        : ws"
 echo -e "path           : /ACell"
