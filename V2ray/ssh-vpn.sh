@@ -17,8 +17,6 @@ organizationalunit=AcellTunnel
 commonname=AcellTunnel
 email=admin@AcellTunnel
 
-mdxvpn="raw.githubusercontent.com/Exe303/Bless/main/Ssh"
-
 # simple password minimal
 wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/password"
 chmod +x /etc/pam.d/common-password
@@ -81,9 +79,6 @@ gem install lolcat
 # set time GMT +7
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 
-# set locale
-sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
-
 # install
 apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl neofetch git lsof
 echo "clear" >> .profile
@@ -116,33 +111,6 @@ screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7700 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7800 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7900 --max-clients 500
 
-# setting port ssh
-sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
-sed -i 's/PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
-cd /etc/ssh
-rm sshd_config
-wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sshd_config.zip && unzip sshd_config.zip
-rm sshd_config.zip
-cd
-
-# install dropbear
-apt -y install dropbear
-sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=143/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 109 -p 69"/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_BANNER="/etc/mdx.txt/g' /etc/mdx.txt
-echo "/bin/false" >> /etc/shells
-echo "/usr/sbin/nologin" >> /etc/shells
-/etc/init.d/dropbear restart
-cd
-
-#install sslh
-#apt install sslh -y
-#cd /etc/default/
-#rm sslh
-#wget https://raw.githubusercontent.com/Exe303/Bless/main/Shell/sslh
-cd
-
 # setting vnstat
 apt -y install vnstat
 /etc/init.d/vnstat restart
@@ -159,31 +127,6 @@ systemctl enable vnstat
 /etc/init.d/vnstat restart
 rm -f /root/vnstat-2.6.tar.gz
 rm -rf /root/vnstat-2.6
-
-# install stunnel
-apt install stunnel4 -y
-cat > /etc/stunnel/stunnel.conf <<-END
-cert = /etc/stunnel/stunnel.pem
-client = no
-socket = a:SO_REUSEADDR=1
-socket = l:TCP_NODELAY=1
-socket = r:TCP_NODELAY=1
-
-[sshws]
-accept = 443
-connect = 127.0.0.1:447
-
-END
-
-# make a certificate
-openssl genrsa -out key.pem 2048
-openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
--subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
-cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
-
-# konfigurasi stunnel
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-/etc/init.d/stunnel4 restart
 
 # install fail2ban
 apt -y install fail2ban
@@ -215,9 +158,6 @@ echo; echo 'Installation has completed.'
 echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
-# banner /etc/mdx.txt
-wget -O /etc/mdx.txt "https://raw.githubusercontent.com/Exe303/Bless/main/Shell/banner"
-
 # blockir torrent
 iptables -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 iptables -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
@@ -237,40 +177,9 @@ netfilter-persistent reload
 
 # download script
 cd /usr/bin
-wget -O addhost "https://${mdxvpn}/addhost.sh"
-wget -O menu "https://${mdxvpn}/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/Exe303/Bless/main/V2ray/trial.sh"
-wget -O hapus "https://${mdxvpn}/hapus.sh"
-wget -O member "https://${mdxvpn}/member.sh"
-wget -O delete "https://${mdxvpn}/delete.sh"
-wget -O cek "https://${mdxvpn}/cek.sh"
-wget -O restart "https://${mdxvpn}/restart.sh"
-wget -O autokill "https://${mdxvpn}/autokill.sh"
-wget -O ceklim "https://${mdxvpn}/ceklim.sh"
-wget -O tendang "https://${mdxvpn}/tendang.sh"
-wget -O renew "https://${mdxvpn}/renew.sh"
-wget -O xp "https://${mdxvpn}/xp.sh"
-wget -O tessh "https://${mdxvpn}/tessh.sh"
-
+wget -O addhost "https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/addhost.sh"
 chmod +x addhost
-chmod +x menu
-chmod +x usernew
-chmod +x trial
-chmod +x hapus
-chmod +x member
-chmod +x delete
-chmod +x cek
-chmod +x restart
-chmod +x autokill
-chmod +x ceklim
-chmod +x tendang
-chmod +x renew
-chmod +x xp
-chmod +x tessh
 
-echo "0 0 * * * root clear-log && reboot" >> /etc/crontab
-echo "0 0 * * * root xp" >> /etc/crontab
 # remove unnecessary files
 cd
 apt autoclean -y
@@ -282,13 +191,7 @@ apt-get -y remove sendmail*
 apt autoremove -y
 # finishing
 cd
-chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/nginx restart
-/etc/init.d/cron restart
-/etc/init.d/ssh restart
-/etc/init.d/dropbear restart
-/etc/init.d/fail2ban restart
-/etc/init.d/stunnel4 restart
 /etc/init.d/vnstat restart
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
@@ -303,8 +206,6 @@ history -c
 echo "unset HISTFILE" >> /etc/profile
 
 cd
-rm -f /root/key.pem
-rm -f /root/cert.pem
 rm -f /root/ssh-vpn.sh
 # finihsing
 clear

@@ -17,8 +17,6 @@ tls="$(cat ~/log-install.txt | grep -w "Vmess TLS" | cut -d: -f2|sed 's/ //g')"
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 		read -rp "User: " -e user
 		CLIENT_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
-		read -rp "Password: " -e user
-		user_EXISTS=$(grep -w $user /etc/v2ray/config.json | wc -l)
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo ""
@@ -26,7 +24,7 @@ until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${CLIENT_EXISTS} == '0' ]]; do
 			exit 1
 		fi
 	done
-uuid=${user}
+uuid=$(cat /proc/sys/kernel/random/uuid)
 read -p "Expired (days): " masaaktif
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 sed -i '/#tls$/a\### '"$user $exp"'\
@@ -37,7 +35,7 @@ cat>/etc/v2ray/$user-tls.json<<EOF
       "ps": "${user}",
       "add": "${domain}",
       "port": "${tls}",
-      "id": "${user}",
+      "id": "${uuid}",
       "aid": "0",
       "net": "ws",
       "path": "/ACell",
@@ -59,7 +57,7 @@ echo -e "CITY           : $CITY"
 echo -e "ISP            : $ISP"
 echo -e "Domain         : ${domain}"
 echo -e "port TLS       : ${tls}"
-echo -e "id             : ${user}"
+echo -e "id             : ${uuid}"
 echo -e "alterId        : 0"
 echo -e "Security       : auto"
 echo -e "network        : ws"
