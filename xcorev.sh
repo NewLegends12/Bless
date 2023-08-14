@@ -43,11 +43,11 @@ echo "" | tee -a log-install.txt
 echo "--------------------------------------------------------------------------------" | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "   >>> Service & Port"  | tee -a log-install.txt
-echo "   - Vmess Tls               : 8443"  | tee -a log-install.txt
+echo "   - Vmess Tls               : 443"  | tee -a log-install.txt
 echo "   - Vmess NonTls            : 80"  | tee -a log-install.txt
 echo "   - Vless Tls               : 888"  | tee -a log-install.txt
 echo "   - Vless Non Tls           : 880"  | tee -a log-install.txt
-echo "   - Trojan                  : 443"  | tee -a log-install.txt
+echo "   - Trojan                  : 8443"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
