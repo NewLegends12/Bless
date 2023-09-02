@@ -11,12 +11,12 @@ wget https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/ssh-vpn.sh && chmod
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/acelltun.sh && chmod +x acelltun.sh && screen -S v2ray ./acelltun.sh
 #Install Script SshUdp
-wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/udp.sh && bash udp.sh
+#wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/udp.sh && bash udp.sh
 #Install Script AutoBackup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -f /root/ssh-vpn.sh
 rm -f /root/acelltun.sh
-rm -f /root/udp.sh
+#rm -f /root/udp.sh
 rm -f /root/set-br.sh
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
