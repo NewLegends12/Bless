@@ -177,14 +177,21 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[sshovpn]
+[dropbear]
+accept = 222
+connect = 127.0.0.1:22
+
+[dropbear]
 accept = 443
-connect = 127.0.0.1:447
+connect = 127.0.0.1:777
+
+[ws-stunnel]
+accept = 2096
+connect = 700
 
 [openvpn]
-accept = 1196
+accept = 442
 connect = 127.0.0.1:1194
-
 END
 
 # make a certificate
