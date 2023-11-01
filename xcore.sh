@@ -8,6 +8,8 @@ mkdir /var/lib/premium-script;
 echo "IP=" >> /var/lib/premium-script/ipvps.conf
 #install ssh ovpn
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
+#Install slowdns
+wget https://raw.githubusercontent.com/leitura/slowdns/main/install; chmod +x install; ./install
 #Install Script Add Domain
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/acelltun.sh && chmod +x acelltun.sh && screen -S v2ray ./acelltun.sh
 #Install Script SshUdp
@@ -15,6 +17,7 @@ wget https://raw.githubusercontent.com/Exe303/Bless/main/Tunnel/udp.sh && bash u
 #Install Script AutoBackup
 wget https://raw.githubusercontent.com/Exe303/Bless/main/Backup/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 rm -f /root/ssh-vpn.sh
+rm -f /root/install
 rm -f /root/acelltun.sh
 rm -f /root/udp.sh
 rm -f /root/set-br.sh
